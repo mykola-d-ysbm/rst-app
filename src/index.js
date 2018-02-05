@@ -1,29 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
 import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
+import 'bootstrap/dist/css/bootstrap.css'
 
 import './index.css';
 
 import CarsList from './components/cars-list';
 import CarDetails from './components/car-details';
 
-import registerServiceWorker from './registerServiceWorker';
+const store = createStore(rootReducer, composeWithDevTools(
+));
 
-const store = createStore(rootReducer);
+console.log(rootReducer);
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <div>
+            <div className="container py-4">
                 <Route exact path="/" component={CarsList}/>
-                <Route path="/cars" component={CarsList}/>
+                <Route exact path="/cars" component={CarsList}/>
                 <Route path="/cars/:id" component={CarDetails}/>
             </div>
         </BrowserRouter>
     </Provider>,
     document.getElementById('root')
 );
-registerServiceWorker();
