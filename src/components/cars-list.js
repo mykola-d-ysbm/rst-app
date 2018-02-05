@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import fetchCars from '../actions';
 
 class CarsList extends Component {
-    // componentDidMount () {
-    //     this.props.fetchCars();
-    // }
+    componentDidMount () {
+        this.props.fetchCars();
+    }
 
     render() {
         return (
@@ -14,4 +16,10 @@ class CarsList extends Component {
     }
 }
 
-export default CarsList;
+function mapStateToProps(state) {
+    return {
+        cars: state.cars
+    };
+}
+
+export default connect(mapStateToProps, null)(CarsList);
