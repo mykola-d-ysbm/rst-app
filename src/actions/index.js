@@ -1,8 +1,7 @@
 import Cars from '../api/cars';
 
 export const FETCH_CARS = 'FETCH_CARS';
-
-console.log(Cars);
+export const GET_CAR = 'GET_CAR';
 
 export function fetchCars() {
     return {
@@ -11,15 +10,10 @@ export function fetchCars() {
     }
 }
 
-export const GET_PRODUCTS = 'GET_PRODUCTS';
-
-export function getProducts () {
-
-    const request = axios.get('/api/products');
-
-    console.log(request);
+export function getCar(carId) {
+    var car = Cars.find(item => item.id === carId);
     return {
-        type: GET_PRODUCTS,
-        payload: request
+        type: GET_CAR,
+        payload: car
     }
 }

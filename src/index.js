@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom'
-import { createStore, applyMiddleware } from 'redux';
+import { createStore} from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
@@ -14,8 +14,6 @@ import CarDetails from './components/car-details';
 
 const store = createStore(rootReducer, composeWithDevTools(
 ));
-
-console.log(rootReducer);
 
 ReactDOM.render(
     <Provider store={store}>

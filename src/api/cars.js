@@ -1,4 +1,4 @@
-const cars =[
+const cars = [
     {
         "id": 0,
         "image": "http://img1.rstcars.com/oldcars/audi/a6/7368094-113.jpg",
