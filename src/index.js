@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './index.css';
 
 import CarsList from './components/cars-list';
-import CarDetails from './components/car-details';
+import CarDetail from './components/car-detail';
 
 const store = createStore(rootReducer, composeWithDevTools(
 ));
@@ -21,7 +21,7 @@ ReactDOM.render(
             <div className="container py-4">
                 <Route exact path="/" component={CarsList}/>
                 <Route exact path="/cars" component={CarsList}/>
-                <Route path="/cars/:id" component={CarDetails}/>
+                <Route path="/cars/:id" component={CarDetail}/>
             </div>
         </BrowserRouter>
     </Provider>,
