@@ -14,7 +14,7 @@ class CarDetail extends Component {
             <div>
                 <div>
                     <img src={this.props.car.image}/>
-                    <div>{this.props.car.pric}</div>
+                    <div>{this.props.car.price}</div>
                     <div>{this.props.car.title}</div>
                     <div>{this.props.car.description}</div>
                 </div>
