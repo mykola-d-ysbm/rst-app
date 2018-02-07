@@ -21,7 +21,7 @@ ReactDOM.render(
             <div className="container py-4">
                 <Route exact path="/" component={CarsList}/>
                 <Route exact path="/cars" component={CarsList}/>
-                <Route path="/cars/:id" component={CarDetail}/>
+                <Route path="/cars/:id" render={(props) => <CarDetail {...props} />}/>
             </div>
         </BrowserRouter>
     </Provider>,

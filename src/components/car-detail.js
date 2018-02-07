@@ -1,49 +1,36 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchCars } from '../actions';
+import { fetchCar } from '../actions';
 
 class CarDetail extends Component {
     componentDidMount() {
-        this.props.fetchCars();
-    }
-
-    renderCar() {
-        var car = this.props.cars.find(item => item.id === 2);
-        return(
-            <div className="row mb-4" key={car.id}>
-                <div className="col-md-4">
-                    <img className="img-fluid" src={car.image} alt={car.title}/>
-                </div>
-                <div className="col-md-8">
-                    <h3 className="mb-0">
-                        {car.title}
-                    </h3>
-                    <div className="mb-1 text-muted">$ {car.price}</div>
-                    <p className="card-text mb-auto">{car.description}</p>
-                </div>
-            </div>
-        );
+        this.props.fetchCar(2);
+        console.log(this.props);
     }
 
     render() {
         return (
             <div>
-                {this.renderCar()}
+                <div>
+                    <img src={this.props.car.image}/>
+                    <div>{this.props.car.pric}</div>
+                    <div>{this.props.car.title}</div>
+                    <div>{this.props.car.description}</div>
+                </div>
             </div>
         );
     }
 }
-
 function mapStateToProps(state) {
     return {
-        cars: state.cars
+        car: state.car
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        fetchCars: fetchCars
+        fetchCar: fetchCar
     }, dispatch)
 }
 

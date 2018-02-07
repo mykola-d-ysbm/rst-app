@@ -1,7 +1,8 @@
 import Cars from '../api/cars';
+import fetchCarById from  '../api/car';
 
 export const FETCH_CARS = 'FETCH_CARS';
-export const GET_CAR = 'GET_CAR';
+export const FETCH_CAR = 'FETCH_CAR';
 
 export function fetchCars() {
     return {
@@ -10,10 +11,10 @@ export function fetchCars() {
     }
 }
 
-export function getCar(carId) {
-    var car = Cars.find(item => item.id === carId);
+export function fetchCar(id) {
+    const car = fetchCarById(id);
     return {
-        type: GET_CAR,
+        type: FETCH_CAR,
         payload: car
     }
 }
