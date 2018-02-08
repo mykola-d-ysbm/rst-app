@@ -12,6 +12,7 @@ export function fetchCars() {
 }
 
 export function fetchCar(id) {
+    console.log(id);
     const car = fetchCarById(id);
     return {
         type: FETCH_CAR,

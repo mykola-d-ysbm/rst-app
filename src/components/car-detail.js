@@ -5,8 +5,9 @@ import { fetchCar } from '../actions';
 
 class CarDetail extends Component {
     componentDidMount() {
-        this.props.fetchCar(2);
-        console.log(this.props);
+        const { id } = this.props.match.params;
+        this.props.fetchCar(0);
+        console.log('componentDidMount',this.props);
     }
 
     render() {

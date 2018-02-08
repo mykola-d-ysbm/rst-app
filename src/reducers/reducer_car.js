@@ -1,7 +1,7 @@
 import { FETCH_CAR } from '../actions';
 
 const initialState = {
-    id: null
+    id: 0
 }
 
 export default function (state = initialState, action) {
