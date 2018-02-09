@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchCar } from '../actions';
 
 class CarDetail extends Component {
     componentDidMount() {
         const { id } = this.props.match.params;
-        this.props.fetchCar(0);
+        this.props.fetchCar(id);
         console.log('componentDidMount',this.props);
     }
 
     render() {
+        const { car } = this.props;
+
+        if (!car) {
+            return <div>Loading...</div>;
+        }
         return (
             <div>
                 <div>
@@ -23,16 +27,10 @@ class CarDetail extends Component {
         );
     }
 }
-function mapStateToProps(state) {
+function mapStateToProps({ cars }, ownProps) {
     return {
-        car: state.car
+        car: cars[ownProps.match.params.id]
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        fetchCar: fetchCar
-    }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CarDetail);
+export default connect(mapStateToProps, { fetchCar })(CarDetail);

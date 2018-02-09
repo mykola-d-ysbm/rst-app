@@ -1,13 +1,10 @@
 import { FETCH_CAR } from '../actions';
 
-const initialState = {
-    id: 0
-}
-
-export default function (state = initialState, action) {
+export default function (state = {}, action) {
     switch (action.type) {
         case FETCH_CAR:
-            return action.payload;
+            console.log(action);
+            return { ...state, [action.payload]: action.payload };
         default:
             return state;
     }
